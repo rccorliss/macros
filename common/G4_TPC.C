@@ -175,7 +175,7 @@ void TPC_Cells()
   printf("TPC_Cells: edrift built\n");
   printf("PHG4TpcElectronDrift reports its name as: %s\n", edrift->Name().c_str());
 
-  //edrift->Detector("TPC");
+  edrift->Detector("TPC");
   printf("TPC_Cells: edrift successfully heard the word TPC\n");
 
   edrift->Verbosity(verbosity);
