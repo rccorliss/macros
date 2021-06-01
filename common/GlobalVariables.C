@@ -32,7 +32,7 @@ namespace Enable
   bool DSTOUT_COMPRESS = false;
   bool OVERLAPCHECK = false;
   bool SUPPORT = false;
-  int VERBOSITY = 0;
+  int VERBOSITY = 10;
 }  // namespace Enable
 
 // every G4 subsystem needs to implement this
