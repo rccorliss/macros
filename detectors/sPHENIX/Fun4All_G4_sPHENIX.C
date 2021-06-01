@@ -304,7 +304,7 @@ int Fun4All_G4_sPHENIX(
 
   Enable::MAGNET = true;
   Enable::MAGNET_ABSORBER = true;
-
+  //
   Enable::HCALOUT = false;
   Enable::HCALOUT_ABSORBER = true;
   Enable::HCALOUT_CELL = Enable::HCALOUT && true;
