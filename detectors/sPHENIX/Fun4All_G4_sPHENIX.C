@@ -278,7 +278,7 @@ int Fun4All_G4_sPHENIX(
   Enable::MICROMEGAS_CELL = Enable::MICROMEGAS && true;
   Enable::MICROMEGAS_CLUSTER = Enable::MICROMEGAS_CELL && true;
 
-  Enable::TRACKING_TRACK = false;
+  Enable::TRACKING_TRACK = true;
   Enable::TRACKING_EVAL = Enable::TRACKING_TRACK && true;
   Enable::TRACKING_QA = Enable::TRACKING_TRACK and Enable::QA && true;
 
