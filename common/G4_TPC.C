@@ -171,7 +171,7 @@ void TPC_Cells()
   PHG4TpcPadPlane* padplane = new PHG4TpcPadPlaneReadout();
   padplane->Verbosity(verbosity);
 
-  PHG4TpcElectronDrift* edrift = new PHG4TpcElectronDrift();
+  PHG4TpcElectronDrift* edrift = new PHG4TpcElectronDrift("PHG4TpcElectronDrift");
   printf("TPC_Cells: edrift built\n");
 
   //edrift->Detector("TPC");
