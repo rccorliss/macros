@@ -177,13 +177,14 @@ void TPC_Cells()
 
   edrift->Detector("TPC");
   printf("TPC_Cells: edrift successfully heard the word TPC\n");
-  // if (true) //set auto-advance and stepping of the directed laser, to fire in every frame
-       //   {//eventually should be G4TPC::ENABLE_DIRECT_LASER
+  if (true) //set auto-advance and stepping of the directed laser, to fire in every frame
+    {//eventually should be G4TPC::ENABLE_DIRECT_LASER
   //edrift->setDirectLaser(true);
   //  edrift->setDirectLaserAuto(true);
   //  edrift->directLaser->SetPhiStepping(20,0,6.28);
   //  edrift->directLaser->SetThetaStepping(20,0,1.57);
-  //}
+      printf("all is well\n");
+    }
 
   edrift->Verbosity(verbosity);
   printf("TPC_Cells: edrift finished\n");
