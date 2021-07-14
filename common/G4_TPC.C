@@ -181,9 +181,11 @@ void TPC_Cells()
   if (true) //set auto-advance and stepping of the directed laser, to fire in every frame
     {//eventually should be G4TPC::ENABLE_DIRECT_LASER
       edrift->setDirectLaser(true);
-      edrift->setDirectLaserAuto(true);
-      edrift->directLaser->SetPhiStepping(20,0.,6.28);
-      edrift->directLaser->SetThetaStepping(20,0.,1.57);
+      edrift->directLaser->AimToThetaPhi(0.78,0.60);
+(20,0.,6.28);
+      //edrift->setDirectLaserAuto(true);
+      //edrift->directLaser->SetPhiStepping(20,0.,6.28);
+      //edrift->directLaser->SetThetaStepping(20,0.,1.57);
       //printf("all is well\n");
     }
 
