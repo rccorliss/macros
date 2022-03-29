@@ -78,7 +78,7 @@ namespace G4TPC
   auto correction_filename = std::string(getenv("CALIBRATIONROOT")) + "/TPC/DistortionMaps/fluct_average.rev3.1side.3d.file0.h_negz.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root";
 
   // enable central membrane g4hits generation
-  bool ENABLE_CENTRAL_MEMBRANE_HITS = false;
+  bool ENABLE_CENTRAL_MEMBRANE_HITS = true;
   
   // enable direct laser g4hits generation
   bool ENABLE_DIRECT_LASER_HITS = false;
@@ -272,7 +272,7 @@ void TPC_Clustering()
   se->registerSubsystem(tpcclusterizer);
 
   
-  if( !G4TPC::ENABLE_DIRECT_LASER_HITS )
+  if( !G4TPC::ENABLE_DIRECT_LASER_HITS && !G4TPC::ENABLE_CENTRAL_MEMBRANE_HITS)
   {
     auto tpcclustercleaner = new TpcClusterCleaner;
     tpcclustercleaner->Verbosity(verbosity);
