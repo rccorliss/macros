@@ -46,6 +46,7 @@ R__LOAD_LIBRARY(libTrackingDiagnostics.so)
 R__LOAD_LIBRARY(libtrackingqa.so)
 void Fun4All_FieldOnAllTrackers(
     const int nEvents = 0,
+    const std::string rcc_correction_filename="",
     const std::string tpcfilename = "DST_BEAM_run2pp_new_2023p013-00041989-0000.root",
     const std::string tpcdir = "/sphenix/lustre01/sphnxpro/commissioning/slurp/tpcbeam/run_00041900_00042000/",
     const std::string outfilename = "clusters_seeds",
@@ -80,7 +81,9 @@ void Fun4All_FieldOnAllTrackers(
   se->registerInputManager(ingeo);
 
   G4TPC::tpc_drift_velocity_reco = (8.0 / 1000) * 107.0 / 105.0;
-
+  //override default static correction:
+  G4TPC::static_correction_filename=rcc_correction_filename
+correctionname
   G4MAGNET::magfield_rescale = 1;
   TrackingInit();
 
