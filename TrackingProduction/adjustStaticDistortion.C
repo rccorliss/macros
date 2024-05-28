@@ -31,7 +31,7 @@ void adjustOnce(const char* inputFileName,const char* outputFileName, double sca
     }
 
     // Get the 3D histogram from the file
-    TH3* hist
+    TH3* hist;
 
     // Modify the histograms
     TH3* hmod;
