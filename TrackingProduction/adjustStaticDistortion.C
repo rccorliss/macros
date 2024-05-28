@@ -31,12 +31,7 @@ void adjustOnce(const char* inputFileName,const char* outputFileName, double sca
     }
 
     // Get the 3D histogram from the file
-    TH3* hist = (TH3*)inputFile->Get(histName);
-    if (!hist) {
-        printf("Error: could not find histogram %s in file %s\n", histName, inputFileName);
-        inputFile->Close();
-        return;
-    }
+    TH3* hist
 
     // Modify the histograms
     TH3* hmod;
