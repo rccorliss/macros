@@ -39,7 +39,7 @@ void adjustOnce(const char* inputFileName,const char* outputFileName, double sca
     }
 
     // Modify the histograms
-    TH3* hModified;
+    TH3* hmod;
 
     // Open the output file
     TFile* outputFile = TFile::Open(outputFileName, "RECREATE");
