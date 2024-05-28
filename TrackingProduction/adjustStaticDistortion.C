@@ -46,18 +46,22 @@ void adjustOnce(const char* inputFileName,const char* outputFileName, double sca
 
     //cycle through all the histograms
     const std::array<const std::string, 2> extension = {{"_negz", "_posz"}};
+    const std::string suffix = "inverted";
     for (int j = 0; j < 2; ++j)
-    {
-      hist = dynamic_cast<TH3*>(inputFile->Get((std::string("hIntDistortionP")+extension[j]).c_str()));
-      hmod=modifyHistogram(hist, scaleP, offsetP);
-      hmod->Write();
-      hist = dynamic_cast<TH3*>(inputFile->Get((std::string("hIntDistortionR")+extension[j]).c_str()));
-      hmod=modifyHistogram(hist, scaleR, offsetR);
-      hmod->Write();
-      hist = dynamic_cast<TH3*>(inputFile->Get((std::string("hIntDistortionZ")+extension[j]).c_str()));
-      hmod=modifyHistogram(hist, 1, 0);
-      hmod->Write();
-     }
+      {
+	hist = dynamic_cast<TH3*>(inputFile->Get((std::string("hIntDistortionP")+extension[j]+suffix).c_str()));
+	hmod=modifyHistogram(hist, scaleP, offsetP);
+	hmod->SetName((std::string("hIntDistortionP")+extension[j]).c_str());
+	hmod->Write();
+	hist = dynamic_cast<TH3*>(inputFile->Get((std::string("hIntDistortionR")+extension[j]+suffix).c_str()));
+	hmod=modifyHistogram(hist, scaleR, offsetR);
+	hmod->SetName((std::string("hIntDistortionR")+extension[j]).c_str());
+	hmod->Write();
+	hist = dynamic_cast<TH3*>(inputFile->Get((std::string("hIntDistortionZ")+extension[j]+suffix).c_str()));
+	hmod=modifyHistogram(hist, 1, 0);
+	hmod->SetName((std::string("hIntDistortionZ")+extension[j]).c_str());
+	hmod->Write();
+      }
 
     // Close the files
     outputFile->Close();
