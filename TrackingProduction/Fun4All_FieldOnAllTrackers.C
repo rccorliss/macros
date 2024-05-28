@@ -83,6 +83,7 @@ void Fun4All_FieldOnAllTrackers(
   G4TPC::tpc_drift_velocity_reco = (8.0 / 1000) * 107.0 / 105.0;
   //override default static correction:
   G4TPC::static_correction_filename=rcc_correction_filename;
+  G4TPC::ENABLE_STATIC_CORRECTIONS = true;
   G4MAGNET::magfield_rescale = 1;
   TrackingInit();
 
