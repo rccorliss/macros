@@ -66,7 +66,7 @@ void adjustOnce(const char* inputFileName,const char* outputFileName, double sca
     // Clean up
     delete outputFile;
     delete inputFile;
-    delete histoModified;
+    delete hmod;
 
     printf("Histogram has been modified and saved to %s\n", outputFileName);
 }
