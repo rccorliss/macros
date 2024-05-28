@@ -46,7 +46,7 @@ void adjustOnce(const char* inputFileName,const char* outputFileName, double sca
 
     //cycle through all the histograms
     const std::array<const std::string, 2> extension = {{"_negz", "_posz"}};
-    const std::string suffix = "inverted";
+    const std::string suffix = "";
     for (int j = 0; j < 2; ++j)
       {
 	hist = dynamic_cast<TH3*>(inputFile->Get((std::string("hIntDistortionP")+extension[j]+suffix).c_str()));
