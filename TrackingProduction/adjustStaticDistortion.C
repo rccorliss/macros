@@ -78,11 +78,17 @@ void adjustOnce(const char* inputFileName,const char* outputFileName, double sca
 void adjustStaticDistortion() {
   //source taken from $CALIBRATIONROOT/distortion_maps
   std::string static_filename="/cvmfs/sphenix.sdcc.bnl.gov/gcc-12.1.0/release/release_ana/ana.420/share/calibrations/distortion_maps/static_only_inverted_10-new.root";
-  adjustOnce(static_filename.c_str(),"static_correction_0.25.root",0.25,0,0.25,0);
-  adjustOnce(static_filename.c_str(),"static_correction_0.50.root",0.5,0,0.5,0);
-  adjustOnce(static_filename.c_str(),"static_correction_0.75.root",0.75,0,0.75,0);
-  adjustOnce(static_filename.c_str(),"static_correction_1.00.root",1,0,1,0);
-  adjustOnce(static_filename.c_str(),"static_correction_1.25.root",1.25,0,1.25,0);
-  adjustOnce(static_filename.c_str(),"static_correction_1.00_phi_p0.1.root",1,0,1,0.1);
-  adjustOnce(static_filename.c_str(),"static_correction_1.00_phi_m0.1.root",1,0,1,-0.1);
+  adjustOnce(static_filename.c_str(),"static_correction_1.05.root",1,0,1,0);
+  adjustOnce(static_filename.c_str(),"static_correction_1.10.root",1,0,1,0);
+  adjustOnce(static_filename.c_str(),"static_correction_1.20.root",1,0,1,0);
+  adjustOnce(static_filename.c_str(),"static_correction_0.95.root",1,0,1,0);
+  adjustOnce(static_filename.c_str(),"static_correction_0.90.root",1,0,1,0);
+  adjustOnce(static_filename.c_str(),"static_correction_0.80.root",1,0,1,0);
+  // adjustOnce(static_filename.c_str(),"static_correction_0.25.root",0.25,0,0.25,0);
+  //adjustOnce(static_filename.c_str(),"static_correction_0.50.root",0.5,0,0.5,0);
+  //adjustOnce(static_filename.c_str(),"static_correction_0.75.root",0.75,0,0.75,0);
+  //adjustOnce(static_filename.c_str(),"static_correction_1.00.root",1,0,1,0);
+  //adjustOnce(static_filename.c_str(),"static_correction_1.25.root",1.25,0,1.25,0);
+  //adjustOnce(static_filename.c_str(),"static_correction_1.00_phi_p0.1.root",1,0,1,0.1);
+  //adjustOnce(static_filename.c_str(),"static_correction_1.00_phi_m0.1.root",1,0,1,-0.1);
 }
