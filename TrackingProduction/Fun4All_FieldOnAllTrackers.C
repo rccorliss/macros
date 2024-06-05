@@ -84,7 +84,7 @@ void Fun4All_FieldOnAllTrackers(
   //override default static correction:
   G4TPC::static_correction_filename=rcc_correction_filename;
   G4TPC::ENABLE_STATIC_CORRECTIONS = true;
-  G4TPC::DISTORTIONS_USE_PHI_AS_RADIANS=false;
+  G4TPC::DISTORTIONS_USE_PHI_AS_RADIANS=true;
   G4MAGNET::magfield_rescale = 1;
   TrackingInit();
 
