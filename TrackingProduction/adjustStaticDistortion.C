@@ -76,7 +76,7 @@ void adjustOnce(const char* inputFileName,const char* outputFileName, double sca
 }
 
 void scaleOnce(const char* inputFileName, float scale){
-  adjustOnce(inputFileName, Form("static_correction_%1.2f",scale),scale,0,scale,0);
+  adjustOnce(inputFileName, Form("static_correction_%1.2f.root",scale),scale,0,scale,0);
   return;
     }
 
