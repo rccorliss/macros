@@ -47,6 +47,7 @@ R__LOAD_LIBRARY(libtrackingqa.so)
 void Fun4All_FieldOnAllTrackers(
     const int nEvents = 0,
     const std::string rcc_correction_filename="",
+    const std::string rcc_output_tag="",
     const bool rcc_radians=true,
     const std::string tpcfilename = "DST_BEAM_run2pp_new_2023p013-00041989-0000.root",
     const std::string tpcdir = "/sphenix/lustre01/sphnxpro/commissioning/slurp/tpcbeam/run_00041900_00042000/",
@@ -65,7 +66,7 @@ void Fun4All_FieldOnAllTrackers(
   ACTSGEOM::mvtxMisalignment = 100;
   ACTSGEOM::inttMisalignment = 100.;
   ACTSGEOM::tpotMisalignment = 100.;
-  TString outfile = outfilename + "_" + runnumber + "-" + segment + ".root";
+  TString outfile = outfilename + "_" + runnumber + "-" + segment +rcc_output_tag+".root";
   std::string theOutfile = outfile.Data();
   auto se = Fun4AllServer::instance();
   se->Verbosity(2);
