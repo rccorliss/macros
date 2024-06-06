@@ -75,9 +75,21 @@ void adjustOnce(const char* inputFileName,const char* outputFileName, double sca
     printf("Histogram has been modified and saved to %s\n", outputFileName);
 }
 
+void scaleOnce(const char* inputFileName, float scale){
+  adjustOnce(inputFileName, Form("static_correction_%1.2f",scale),scale,0,scale,0);
+  return;
+    }
+
 void adjustStaticDistortion() {
   //source taken from $CALIBRATIONROOT/distortion_maps
   std::string static_filename="/cvmfs/sphenix.sdcc.bnl.gov/gcc-12.1.0/release/release_ana/ana.420/share/calibrations/distortion_maps/static_only_inverted_10-new.root";
+
+  scaleOnce(static_filename.c_str(),-0.25);
+  scaleOnce(static_filename.c_str(),0.00);
+  scaleOnce(static_filename.c_str(),0.25);
+  scaleOnce(static_filename.c_str(),0.50
+
+  return;
   adjustOnce(static_filename.c_str(),"static_correction_1.05.root",1.05,0,1.05,0);
   adjustOnce(static_filename.c_str(),"static_correction_1.10.root",1.10,0,1.1,0);
   adjustOnce(static_filename.c_str(),"static_correction_1.20.root",1.20,0,1.2,0);
