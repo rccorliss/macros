@@ -87,7 +87,7 @@ void adjustStaticDistortion() {
   scaleOnce(static_filename.c_str(),-0.25);
   scaleOnce(static_filename.c_str(),0.00);
   scaleOnce(static_filename.c_str(),0.25);
-  scaleOnce(static_filename.c_str(),0.50
+  scaleOnce(static_filename.c_str(),0.50);
 
   return;
   adjustOnce(static_filename.c_str(),"static_correction_1.05.root",1.05,0,1.05,0);
