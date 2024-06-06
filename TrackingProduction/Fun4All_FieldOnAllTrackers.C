@@ -268,8 +268,8 @@ void Fun4All_FieldOnAllTrackers(
   resid->clusterTree();
   resid->hitTree();
   resid->Verbosity(0);
-  resid->dropClustersNoState(true);
-  //setDropNoState();  ask tony.  if the track residual module doesn't have a state, this will keep it form making one up for the TTree.
+  // resid->dropClustersNoState(true);
+  //  ask tony.  if the track residual module doesn't have a state, this will keep it form making one up for the TTree.
   se->registerSubsystem(resid);
 
   //auto ntuplizer = new TrkrNtuplizer("TrkrNtuplizer");
