@@ -66,7 +66,7 @@ void Fun4All_FieldOnAllTrackers(
   ACTSGEOM::mvtxMisalignment = 100;
   ACTSGEOM::inttMisalignment = 100.;
   ACTSGEOM::tpotMisalignment = 100.;
-  TString outfile = outfilename + "_" + runnumber + "-" + segment +rcc_output_tag+".root";
+  TString outfile = outfilename + "_" + runnumber + "-" + segment +rcc_output_tag.c_str()+".root";
   std::string theOutfile = outfile.Data();
   auto se = Fun4AllServer::instance();
   se->Verbosity(2);
