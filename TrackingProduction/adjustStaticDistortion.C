@@ -90,12 +90,15 @@ void adjustStaticDistortion() {
   scaleOnce(static_filename.c_str(),0.50);
 
   return;
-  adjustOnce(static_filename.c_str(),"static_correction_1.05.root",1.05,0,1.05,0);
-  adjustOnce(static_filename.c_str(),"static_correction_1.10.root",1.10,0,1.1,0);
-  adjustOnce(static_filename.c_str(),"static_correction_1.20.root",1.20,0,1.2,0);
-  adjustOnce(static_filename.c_str(),"static_correction_0.95.root",0.95,0,0.95,0);
-  adjustOnce(static_filename.c_str(),"static_correction_0.90.root",0.90,0,0.90,0);
-  adjustOnce(static_filename.c_str(),"static_correction_0.80.root",0.80,0,0.80,0);
+  adjustOnce(static_filename.c_str(),"static_correction_1.05_0.0.root",1.05,0,1.05,0);
+  adjustOnce(static_filename.c_str(),"static_correction_1.05_0.01.root",1.05,0,1.05,0.01);
+  adjustOnce(static_filename.c_str(),"static_correction_1.05_-0.01.root",1.05,0,1.05,-0.01);
+  adjustOnce(static_filename.c_str(),"static_correction_0.95_0.0.root",0.95,0,0.95,0);
+  adjustOnce(static_filename.c_str(),"static_correction_0.95_0.01.root",0.95,0,0.95,0.01);
+  adjustOnce(static_filename.c_str(),"static_correction_0.95_-0.01.root",0.95,0,0.95,-0.01);
+  adjustOnce(static_filename.c_str(),"static_correction_1.00_0.0.root",1.00,0,1.00,0);
+  adjustOnce(static_filename.c_str(),"static_correction_1.00_0.01.root",1.00,0,1.00,0.01);
+  adjustOnce(static_filename.c_str(),"static_correction_1.00_-0.01.root",1.00,0,1.00,-0.01);
   // adjustOnce(static_filename.c_str(),"static_correction_0.25.root",0.25,0,0.25,0);
   //adjustOnce(static_filename.c_str(),"static_correction_0.50.root",0.5,0,0.5,0);
   //adjustOnce(static_filename.c_str(),"static_correction_0.75.root",0.75,0,0.75,0);
