@@ -84,12 +84,6 @@ void adjustStaticDistortion() {
   //source taken from $CALIBRATIONROOT/distortion_maps
   std::string static_filename="/cvmfs/sphenix.sdcc.bnl.gov/gcc-12.1.0/release/release_ana/ana.420/share/calibrations/distortion_maps/static_only_inverted_10-new.root";
 
-  scaleOnce(static_filename.c_str(),-0.25);
-  scaleOnce(static_filename.c_str(),0.00);
-  scaleOnce(static_filename.c_str(),0.25);
-  scaleOnce(static_filename.c_str(),0.50);
-
-  return;
   adjustOnce(static_filename.c_str(),"static_correction_1.05_0.0.root",1.05,0,1.05,0);
   adjustOnce(static_filename.c_str(),"static_correction_1.05_0.01.root",1.05,0,1.05,0.01);
   adjustOnce(static_filename.c_str(),"static_correction_1.05_-0.01.root",1.05,0,1.05,-0.01);
