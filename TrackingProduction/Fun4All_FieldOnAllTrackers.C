@@ -52,7 +52,7 @@ void Fun4All_FieldOnAllTrackers(
     const std::string tpcfilename = "DST_BEAM_run2pp_new_2023p013-00041989-0000.root",
     const std::string tpcdir = "/sphenix/lustre01/sphnxpro/commissioning/slurp/tpcbeam/run_00041900_00042000/",
     const std::string outfilename = "clusters_seeds",
-    const bool convertSeeds = false/*false=use ACTS fit and state, which will be at the cluster radius. true=use helix fit, which may not get all the cluster position corrections*/)
+    const bool convertSeeds = true/*false=use ACTS fit and state, which will be at the cluster radius. true=use helix fit, which may not get all the cluster position corrections*/)
 {
   std::string inputtpcRawHitFile = tpcdir + tpcfilename;
 
