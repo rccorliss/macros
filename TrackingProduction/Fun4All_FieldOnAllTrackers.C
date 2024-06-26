@@ -83,6 +83,9 @@ void Fun4All_FieldOnAllTrackers(
   se->registerInputManager(ingeo);
 
   G4TPC::tpc_drift_velocity_reco = (8.0 / 1000) * 107.0 / 105.0;
+
+  G4TPC::ENABLE_MODULE_EDGE_CORRECTIONS = true;
+
   //override default static correction:
   if (rcc_correction_filename!=""){
     G4TPC::static_correction_filename=rcc_correction_filename;
@@ -267,6 +270,7 @@ void Fun4All_FieldOnAllTrackers(
   resid->alignment(false);
   resid->clusterTree();
   resid->hitTree();
+  resid->convertSeeds(G4TRACKING::convert_seeds_to_svtxtracks);
   resid->Verbosity(0);
   resid->dropClustersNoState(true);
   //  ask tony.  if the track residual module doesn't have a state, this will keep it form making one up for the TTree.
