@@ -1,8 +1,8 @@
-#ifndef FUN4ALL_YEAR1_C
-#define FUN4ALL_YEAR1_C
+#ifndef FUN4ALL_YEAR2_C
+#define FUN4ALL_YEAR2_C
 
 #include <QA.C>
-#include<Calo_Calib.C>
+#include <Calo_Calib.C>
 
 #include <caloreco/CaloTowerBuilder.h>
 #include <caloreco/CaloTowerCalib.h>
@@ -15,6 +15,8 @@
 #include <caloreco/TowerInfoDeadHotMask.h>
 
 #include <mbd/MbdReco.h>
+
+#include <zdcinfo/ZdcReco.h>
 
 #include <globalvertex/GlobalVertexReco.h>
 
@@ -39,6 +41,7 @@
 #include <calotrigger/MinimumBiasClassifier.h>
 
 #include <calovalid/CaloValid.h>
+#include <globalqa/GlobalQA.h>
 
 R__LOAD_LIBRARY(libfun4all.so)
 R__LOAD_LIBRARY(libfun4allraw.so)
@@ -47,8 +50,10 @@ R__LOAD_LIBRARY(libcalotrigger.so)
 R__LOAD_LIBRARY(libcentrality.so)
 R__LOAD_LIBRARY(libffamodules.so)
 R__LOAD_LIBRARY(libmbd.so)
+R__LOAD_LIBRARY(libzdcinfo.so)
 R__LOAD_LIBRARY(libglobalvertex.so)
 R__LOAD_LIBRARY(libcalovalid.so)
+R__LOAD_LIBRARY(libglobalQA.so)
 
 void Fun4All_Year2(int nEvents=100,
                    const std::string &fname = "DST_TRIGGERED_RAW_beam_new_2023p015-00040797-0001.root",
@@ -62,12 +67,16 @@ void Fun4All_Year2(int nEvents=100,
   CaloTowerDefs::BuilderType buildertype = CaloTowerDefs::kWaveformTowerv2;
 
   Fun4AllServer *se = Fun4AllServer::instance();
-  se->Verbosity(0);
+  se->Verbosity(1);
 
   recoConsts *rc = recoConsts::instance();
 
+  pair<int, int> runseg = Fun4AllUtils::GetRunSegment(fname);
+  int runnumber = runseg.first;
+
   // conditions DB flags and timestamp
   rc->set_StringFlag("CDB_GLOBALTAG", dbtag);
+  rc->set_uint64Flag("TIMESTAMP", runnumber);
   CDBInterface::instance()->Verbosity(1);
 
   FlagHandler *flag = new FlagHandler();
@@ -76,6 +85,18 @@ void Fun4All_Year2(int nEvents=100,
   // MBD/BBC Reconstruction
   MbdReco *mbdreco = new MbdReco();
   se->registerSubsystem(mbdreco);
+
+  CaloTowerBuilder *caZDC = new CaloTowerBuilder("ZDCBUILDER");
+  caZDC->set_detector_type(CaloTowerDefs::ZDC);
+  caZDC->set_builder_type(buildertype);
+  caZDC->set_processing_type(CaloWaveformProcessing::FAST);
+  caZDC->set_nsamples(16);
+  caZDC->set_offlineflag();
+  se->registerSubsystem(caZDC);
+
+  //ZDC Reconstruction--Calib Info
+  ZdcReco *zdcreco = new ZdcReco();
+  se->registerSubsystem(zdcreco);
 
   // Official vertex storage
   GlobalVertexReco *gvertex = new GlobalVertexReco();
@@ -107,14 +128,6 @@ void Fun4All_Year2(int nEvents=100,
   ctbOHCal->set_nsamples(12);
   se->registerSubsystem(ctbOHCal);
 
-  CaloTowerBuilder *caZDC = new CaloTowerBuilder("ZDCBUILDER");
-  caZDC->set_detector_type(CaloTowerDefs::ZDC);
-  caZDC->set_builder_type(buildertype);
-  caZDC->set_processing_type(CaloWaveformProcessing::FAST);
-  caZDC->set_nsamples(16);
-  caZDC->set_offlineflag();
-  se->registerSubsystem(caZDC);
-
   CaloTowerBuilder *caEPD = new CaloTowerBuilder("SEPDBUILDER");
   caEPD->set_detector_type(CaloTowerDefs::SEPD);
   caEPD->set_builder_type(buildertype);
@@ -141,6 +154,9 @@ void Fun4All_Year2(int nEvents=100,
   CaloValid *ca = new CaloValid("CaloValid");
   ca->set_timing_cut_width(200);
   se->registerSubsystem(ca);
+
+  GlobalQA *gqa = new GlobalQA("GlobalQA");
+  se->registerSubsystem(gqa);
   
   Fun4AllInputManager *In = new Fun4AllDstInputManager("in");
   In->AddFile(fname);
