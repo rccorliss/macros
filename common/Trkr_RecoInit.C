@@ -36,10 +36,16 @@ void TrackingInit()
     if (G4TPC::ENABLE_STATIC_CORRECTIONS)
     {
       tpcLoadDistortionCorrection->set_correction_filename(TpcLoadDistortionCorrection::DistortionType_Static, G4TPC::static_correction_filename);
+      if(G4TPC::ENABLE_STATIC_CORRECTIONS_SCALING)
+      { tpcLoadDistortionCorrection->set_scale_factor(TpcLoadDistortionCorrection::DistortionType_Static, G4TPC::static_correction_scale_factor);
+      }
     }
     if (G4TPC::ENABLE_AVERAGE_CORRECTIONS)
     {
       tpcLoadDistortionCorrection->set_correction_filename(TpcLoadDistortionCorrection::DistortionType_Average, G4TPC::average_correction_filename);
+      if(G4TPC::ENABLE_AVERAGE_CORRECTIONS_SCALING)
+      { tpcLoadDistortionCorrection->set_scale_factor(TpcLoadDistortionCorrection::DistortionType_Average, G4TPC::average_correction_scale_factor);
+      }
     }
     se->registerSubsystem(tpcLoadDistortionCorrection);
   }

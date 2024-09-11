@@ -126,6 +126,14 @@ void Fun4All_FieldOnAllTrackers(
   //G4TPC::ENABLE_STATIC_CORRECTIONS = true;
   //G4TPC::DISTORTIONS_USE_PHI_AS_RADIANS = false;
 
+//to enable and set scaling of distortions, uncomment the lines below:
+// these only work if the underlying corrections are enabled
+//  G4TPC::ENABLE_STATIC_CORRECTIONS_SCALING = true;
+//  G4TPC::static_correction_scale_factor = 1.0;
+//  G4TPC::ENABLE_AVERAGE_CORRECTIONS_SCALING = true;
+//  G4TPC::average_correction_scale_factor = 1.0;
+
+
   G4MAGNET::magfield_rescale = 1;
   TrackingInit();
 
