@@ -60,7 +60,9 @@ void Fun4All_FieldOnAllTrackers(
     const std::string tpcfilename = "DST_BEAM_run2pp_new_2023p013-00041989-0000.root",
     const std::string tpcdir = "/sphenix/lustre01/sphnxpro/commissioning/slurp/tpcbeam/run_00041900_00042000/",
     const std::string outfilename = "clusters_seeds",
-    const bool convertSeeds = true)
+    const bool convertSeeds = true,
+    const float staticCorrScale = 1.0,
+    const float averageCorrScale = 1.0)
 {
   std::string inputtpcRawHitFile = tpcdir + tpcfilename;
 
@@ -136,9 +138,9 @@ void Fun4All_FieldOnAllTrackers(
   //to enable and set scaling of distortions, uncomment the lines below:
   // these only work if the underlying corrections are enabled
   G4TPC::ENABLE_STATIC_CORRECTIONS_SCALING = true;
-  G4TPC::static_correction_scale_factor = 1.0;
+  G4TPC::static_correction_scale_factor = staticCorrScale;
   G4TPC::ENABLE_AVERAGE_CORRECTIONS_SCALING = true;
-  G4TPC::average_correction_scale_factor = 1.0;
+  G4TPC::average_correction_scale_factor = averageCorrScale;
 
 
   G4MAGNET::magfield_rescale = 1;
