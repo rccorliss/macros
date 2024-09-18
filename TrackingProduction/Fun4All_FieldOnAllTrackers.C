@@ -124,21 +124,21 @@ void Fun4All_FieldOnAllTrackers(
   TRACKING::tpc_zero_supp = true;
 
   //to turn on the default static corrections, enable the two lines below
-  //G4TPC::ENABLE_STATIC_CORRECTIONS = true;
-  //G4TPC::USE_PHI_AS_RAD_STATIC_CORRECTIONS = false;
+  G4TPC::ENABLE_STATIC_CORRECTIONS = true;
+  G4TPC::USE_PHI_AS_RAD_STATIC_CORRECTIONS = false;
 
   //to turn on the average corrections derived from simulation, enable the three lines below
   //note: these are designed to be used only if static corrections are also applied
-  //G4TPC::ENABLE_AVERAGE_CORRECTIONS = true;
-  //G4TPC::USE_PHI_AS_RAD_AVERAGE_CORRECTIONS = false;
-  //G4TPC:average_correction_filename = std::string(getenv("CALIBRATIONROOT")) + "/distortion_maps/average_minus_static_distortion_inverted_10-new.root";
+  G4TPC::ENABLE_AVERAGE_CORRECTIONS = true;
+  G4TPC::USE_PHI_AS_RAD_AVERAGE_CORRECTIONS = false;
+  G4TPC:average_correction_filename = std::string(getenv("CALIBRATIONROOT")) + "/distortion_maps/average_minus_static_distortion_inverted_10-new.root";
 
-//to enable and set scaling of distortions, uncomment the lines below:
-// these only work if the underlying corrections are enabled
-//  G4TPC::ENABLE_STATIC_CORRECTIONS_SCALING = true;
-//  G4TPC::static_correction_scale_factor = 1.0;
-//  G4TPC::ENABLE_AVERAGE_CORRECTIONS_SCALING = true;
-//  G4TPC::average_correction_scale_factor = 1.0;
+  //to enable and set scaling of distortions, uncomment the lines below:
+  // these only work if the underlying corrections are enabled
+  G4TPC::ENABLE_STATIC_CORRECTIONS_SCALING = true;
+  G4TPC::static_correction_scale_factor = 1.0;
+  G4TPC::ENABLE_AVERAGE_CORRECTIONS_SCALING = true;
+  G4TPC::average_correction_scale_factor = 1.0;
 
 
   G4MAGNET::magfield_rescale = 1;
